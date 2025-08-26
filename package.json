@@ -1,0 +1,33 @@
+{
+  "name": "@palletizr/shared-components",
+  "version": "1.0.0",
+  "description": "Shared UI components for the Palletizr platform",
+  "main": "navigation.js",
+  "scripts": {
+    "setup": "node setup.js",
+    "setup:symlinks": "node setup.js --symlinks",
+    "setup:copy-only": "node setup.js --no-html-update"
+  },
+  "keywords": [
+    "palletizr",
+    "navigation",
+    "ui-components",
+    "shared"
+  ],
+  "author": "Palletizr Team",
+  "license": "MIT",
+  "files": [
+    "navigation.html",
+    "navigation.css", 
+    "navigation.js",
+    "setup.js",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/palletizr-shared-components.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

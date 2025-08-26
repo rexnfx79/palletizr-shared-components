@@ -1,0 +1,73 @@
+/* Palletizr Shared Navigation Styles */
+
+/* Glass Navigation Styles */
+.glass-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 100%);
+    border-bottom: 1px solid var(--glass-border, rgba(255,255,255,0.18));
+    box-shadow: none;
+    transition: background-color 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+}
+
+.glass-nav.scrolled {
+    background: linear-gradient(180deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0.14) 100%);
+    border-color: rgba(255,255,255,0.24);
+    box-shadow: 0 12px 30px -16px rgba(0,0,0,0.35);
+}
+
+/* Nav typography color transitions */
+.glass-nav .brand-title { 
+    color: var(--color-gray-900, #111827); 
+    transition: color 250ms ease;
+}
+
+.glass-nav .brand-subtitle { 
+    color: var(--color-gray-600, #4B5563); 
+    transition: color 250ms ease;
+}
+
+.glass-nav.scrolled .brand-title { 
+    color: var(--color-gray-900, #111827); 
+}
+
+.glass-nav.scrolled .brand-subtitle { 
+    color: var(--color-gray-600, #4B5563); 
+}
+
+.nav-pill { 
+    background: rgba(15, 76, 129, 0.08); 
+    color: var(--color-primary-dark, #0A2E4D); 
+    border: 1px solid rgba(15,76,129,0.25);
+    transition: all 250ms ease;
+}
+
+.glass-nav.scrolled .nav-pill { 
+    background: rgba(15, 76, 129, 0.08); 
+    color: var(--color-primary-dark, #0A2E4D); 
+    border-color: rgba(15,76,129,0.25); 
+}
+
+/* Glass surface effects */
+.glass-surface {
+    background: var(--glass-bg, rgba(255, 255, 255, 0.06));
+    border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.18));
+    box-shadow: var(--glass-shadow, 0 10px 30px -10px rgba(0, 0, 0, 0.35));
+}
+
+/* Responsive navigation badge */
+@media (min-width: 768px) {
+    .nav-badge { 
+        display: block !important; 
+    }
+}
+
+/* Backdrop filter support */
+@supports ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))) {
+    .glass-surface,
+    .glass-nav {
+        -webkit-backdrop-filter: blur(18px) saturate(140%);
+        backdrop-filter: blur(18px) saturate(140%);
+    }
+}
