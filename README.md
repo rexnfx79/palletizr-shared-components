@@ -83,7 +83,7 @@ The component uses CSS custom properties that can be overridden:
 
 ```bash
 # Add as submodule
-git submodule add https://github.com/your-org/palletizr-shared-components.git shared-components
+git submodule add https://github.com/rexnfx79/palletizr-shared-components.git shared-components
 
 # Initialize and update
 git submodule update --init --recursive
