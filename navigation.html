@@ -1,22 +1,97 @@
 <!-- Palletizr Shared Navigation Component -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+
+:root {
+    --nav-primary: #0f4a73;
+    --nav-text: #0b2a3c;
+    --nav-muted: #5b6875;
+    --nav-border: rgba(15, 74, 115, 0.20);
+}
+
+#palletizr-nav {
+    font-family: 'Inter', ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+#palletizr-nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+#palletizr-nav .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+}
+
+#palletizr-nav .logo-group {
+    display: flex;
+    align-items: center;
+}
+
+#palletizr-nav .logo-tile {
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--nav-primary);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(15, 74, 115, 0.08), 0 1px 2px rgba(15, 74, 115, 0.06);
+}
+
+#palletizr-nav .logo-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: #ffffff;
+}
+
+#palletizr-nav .brand-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -0.01em;
+    color: var(--nav-text);
+}
+
+#palletizr-nav .brand-subtitle {
+    font-size: 0.95rem;
+    margin: 0;
+    color: var(--nav-muted);
+}
+
+#palletizr-nav .nav-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--nav-text);
+    background: linear-gradient(180deg, #ffffff, #f7fbff);
+    border: 1px solid var(--nav-border);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 0 0 3px rgba(15, 74, 115, 0.03);
+    text-decoration: none;
+}
+</style>
 <header class="glass-nav" id="palletizr-nav">
     <div class="container">
-        <div style="display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 0;">
-            <div style="display: flex; align-items: center;">
-                <div style="width: 3rem; height: 3rem; background-color: var(--color-primary); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;" class="glass-surface">
-                    <svg style="width: 1.75rem; height: 1.75rem; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="nav-row">
+            <div class="logo-group">
+                <div class="logo-tile glass-surface">
+                    <svg class="logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                     </svg>
                 </div>
                 <div style="margin-left: 1rem;">
-                    <h1 style="font-size: 1.5rem; font-weight: 700; margin: 0;" class="brand-title">Palletizr</h1>
-                    <p style="font-size: 0.875rem; margin: 0;" class="brand-subtitle">Container Loading Optimization</p>
+                    <h1 class="brand-title">Palletizr</h1>
+                    <p class="brand-subtitle">Container Loading Optimization</p>
                 </div>
             </div>
-            <div style="display: none;" class="nav-badge">
-                <span style="display: inline-flex; align-items: center; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500;" class="nav-pill" id="nav-badge-text">
-                    Professional Calculator
-                </span>
+            <div class="nav-badge">
+                <a class="nav-pill" id="nav-badge-text" href="/token">Professional Calculator</a>
             </div>
         </div>
     </div>
