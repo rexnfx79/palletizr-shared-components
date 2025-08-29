@@ -123,7 +123,7 @@ jobs:
       
       - name: Update submodules
         run: |
-          git submodule update --remote --merge
+          git submodule update --remote --merge --allow-unrelated-histories
           git add .
           git diff --staged --quiet || git commit -m "Auto-update shared components"
           git push
