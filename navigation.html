@@ -73,6 +73,13 @@
     line-height: 1.3;
 }
 
+#palletizr-nav .nav-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+}
+
 #palletizr-nav .nav-pill {
     display: inline-flex;
     align-items: center;
@@ -88,12 +95,22 @@
     -webkit-backdrop-filter: blur(20px);
     text-decoration: none;
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 #palletizr-nav .nav-pill:hover {
     background: rgba(255, 255, 255, 0.12);
     border-color: rgba(255, 255, 255, 0.18);
     transform: translateY(-1px);
+}
+
+#palletizr-nav .nav-subtitle {
+    font-size: 0.75rem;
+    color: var(--nav-muted);
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.2;
+    white-space: nowrap;
 }
 
 /* Glass navigation background */
@@ -117,6 +134,10 @@
     #palletizr-nav .brand-subtitle {
         font-size: 0.8rem;
     }
+    
+    #palletizr-nav .nav-subtitle {
+        display: none;
+    }
 }
 </style>
 <header class="glass-nav" id="palletizr-nav">
@@ -135,7 +156,41 @@
             </div>
             <div class="nav-badge">
                 <a class="nav-pill" id="nav-badge-text" href="/token">Professional Calculator</a>
+                <p class="nav-subtitle" id="nav-subtitle-text"></p>
             </div>
         </div>
     </div>
 </header>
+
+<script>
+// Dynamic navigation text based on current URL
+function updateNavigationText() {
+    const currentUrl = window.location.href;
+    const navBadgeText = document.getElementById('nav-badge-text');
+    const navSubtitleText = document.getElementById('nav-subtitle-text');
+    
+    if (currentUrl.includes('app.palletizr.com')) {
+        navBadgeText.textContent = 'Tutorial';
+        navSubtitleText.textContent = '';
+    } else if (currentUrl.includes('palletizr.com')) {
+        navBadgeText.textContent = 'Try Free';
+        navSubtitleText.textContent = 'No signup required';
+    } else {
+        // Default fallback
+        navBadgeText.textContent = 'Professional Calculator';
+        navSubtitleText.textContent = '';
+    }
+}
+
+// Update navigation text when page loads
+document.addEventListener('DOMContentLoaded', updateNavigationText);
+
+// Also update if URL changes (for SPA navigation)
+if (window.history && window.history.pushState) {
+    const originalPushState = window.history.pushState;
+    window.history.pushState = function() {
+        originalPushState.apply(this, arguments);
+        setTimeout(updateNavigationText, 100);
+    };
+}
+</script>
