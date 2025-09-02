@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+---
+
+<Layout title="Palletizr Astro Components">
+  <main>
+    <h1>Palletizr Astro Components</h1>
+    
+    <section>
+      <h2>Navigation Component</h2>
+      <p>Default navigation:</p>
+      <Navigation />
+      
+      <p>Transparent navigation:</p>
+      <Navigation variant="transparent" />
+      
+      <p>Custom badge:</p>
+      <Navigation 
+        badgeText="Get Started" 
+        subtitleText="Join thousands of users"
+        href="/signup"
+      />
+      
+      <p>No badge:</p>
+      <Navigation showBadge={false} />
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  section {
+    margin: 3rem 0;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+  }
+  
+  h1 {
+    color: #1f2937;
+    margin-bottom: 2rem;
+  }
+  
+  h2 {
+    color: #374151;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: #6b7280;
+    margin-bottom: 1rem;
+  }
+</style>

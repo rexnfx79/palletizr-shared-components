@@ -1,137 +1,204 @@
-# Palletizr Shared Components
+# Palletizr Astro Components
 
-Shared UI components for the Palletizr platform, used across multiple repositories.
+A modern component library built with Astro for the Palletizr platform. This replaces the previous shared components system with a more maintainable, type-safe approach.
+
+## Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+The development server will be available at `http://localhost:4321/`
+
+## Features
+
+- 🚀 **Astro-powered**: Built with the latest Astro framework
+- 🎨 **TypeScript**: Full type safety and IntelliSense support
+- 🎯 **Zero JS by default**: Components ship with minimal JavaScript
+- 🔧 **Customizable**: Extensive props for component customization
+- 📱 **Responsive**: Mobile-first design approach
 
 ## Components
 
 ### Navigation Component
 
-A responsive navigation header with glassmorphism effects.
+A responsive navigation header with glassmorphism effects and dynamic content.
 
-#### Files
-- `navigation.html` - HTML structure
-- `navigation.css` - Styles and animations  
-- `navigation.js` - Interactive behavior
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `badgeText` | `string` | `'Professional Calculator'` | Text displayed in the navigation badge |
+| `subtitleText` | `string` | `''` | Subtitle text below the badge |
+| `logoUrl` | `string` | `'/logo_bw_long.png'` | URL to the logo image |
+| `logoAlt` | `string` | `'Palletizr Logo'` | Alt text for the logo |
+| `href` | `string` | `'/token'` | Link URL for the badge |
+| `showBadge` | `boolean` | `true` | Whether to show the badge |
+| `variant` | `'default' \| 'transparent' \| 'glass'` | `'default'` | Visual variant of the navigation |
+| `className` | `string` | `''` | Additional CSS classes |
 
 #### Usage
 
-**Method 1: Include Files Directly**
+```astro
+---
+import { Navigation } from '@palletizr/astro-components';
+---
+
+<!-- Basic usage -->
+<Navigation />
+
+<!-- Customized navigation -->
+<Navigation 
+  badgeText="Get Started"
+  subtitleText="Join thousands of users"
+  href="/signup"
+  variant="transparent"
+/>
+
+<!-- No badge -->
+<Navigation showBadge={false} />
+```
+
+#### Dynamic Behavior
+
+The navigation automatically adapts based on the current URL:
+- `app.palletizr.com` → Shows "Tutorial"
+- `palletizr.com` → Shows "Try Free" with "No signup required"
+- Other domains → Shows "Professional Calculator"
+
+## Installation
+
+### For Astro Projects
+
+```bash
+npm install @palletizr/astro-components
+```
+
+### For Non-Astro Projects
+
+```bash
+npm install @palletizr/astro-components
+```
+
+Note: Non-Astro projects will need to use the compiled output or consider migrating to Astro.
+
+## Development
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Setup
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+### Project Structure
+
+```
+src/
+├── components/          # Astro components
+│   └── Navigation.astro
+├── layouts/            # Layout components
+│   └── Layout.astro
+├── pages/              # Demo pages
+│   ├── index.astro
+│   └── test.astro
+└── index.ts            # Main exports
+```
+
+## Migration from Shared Components
+
+### What Changed
+
+1. **File-based imports** → **Package imports**
+2. **Manual file copying** → **npm install**
+3. **HTML/CSS/JS files** → **Astro components**
+4. **Setup scripts** → **Package manager**
+
+### Migration Steps
+
+#### 1. Remove Old Dependencies
+
+```bash
+# Remove old shared components
+rm -rf shared-components/
+git submodule deinit shared-components
+git rm shared-components
+```
+
+#### 2. Install New Package
+
+```bash
+npm install @palletizr/astro-components
+```
+
+#### 3. Update Imports
+
+**Before:**
 ```html
-<!-- Include CSS -->
 <link rel="stylesheet" href="shared-components/navigation.css">
-
-<!-- Include HTML -->
-<!-- Replace existing header with content from navigation.html -->
-
-<!-- Include JS -->
 <script src="shared-components/navigation.js"></script>
+<!-- HTML content copied from navigation.html -->
 ```
 
-**Method 2: JavaScript Integration**
-```html
-<div id="navigation-container"></div>
+**After:**
+```astro
+---
+import { Navigation } from '@palletizr/astro-components';
+---
 
-<script>
-// Load navigation dynamically
-fetch('shared-components/navigation.html')
-    .then(response => response.text())
-    .then(html => {
-        document.getElementById('navigation-container').innerHTML = html;
-        // Initialize navigation
-        new PalletizrNavigation({
-            showBadge: true,
-            badgeText: 'Custom Text',
-            enableScrollEffect: true
-        });
-    });
-</script>
+<Navigation />
 ```
 
-#### Customization Options
+#### 4. Update Build Process
 
-```javascript
-const nav = new PalletizrNavigation({
-    showBadge: true,                    // Show/hide badge
-    badgeText: 'Professional Calculator', // Badge text
-    enableScrollEffect: true            // Enable scroll effects
-});
+**Before:** Files were copied/symlinked during setup
+**After:** Components are bundled during build
 
-// Dynamic methods
-nav.setBadgeText('New Text');
-nav.showBadge();
-nav.hideBadge();
-```
+### Benefits of Migration
 
-#### CSS Variables
+- ✅ **Better maintainability**: Single source of truth
+- ✅ **Type safety**: Full TypeScript support
+- ✅ **Versioning**: Semantic versioning with npm
+- ✅ **Performance**: Optimized builds and tree-shaking
+- ✅ **Developer experience**: Better tooling and debugging
+- ✅ **Consistency**: Standardized component API
 
-The component uses CSS custom properties that can be overridden:
+## Contributing
 
-```css
-:root {
-    --color-primary: #0F4C81;
-    --color-gray-900: #111827;
-    --color-gray-600: #4B5563;
-    --glass-bg: rgba(255, 255, 255, 0.06);
-    --glass-border: rgba(255, 255, 255, 0.18);
-    --glass-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.35);
-}
-```
-
-## Integration with Git Submodules
-
-### Setup in Parent Repository
-
-```bash
-# Add as submodule
-git submodule add https://github.com/rexnfx79/palletizr-shared-components.git shared-components
-
-# Initialize and update
-git submodule update --init --recursive
-```
-
-### Update Shared Components
-
-```bash
-# In parent repository
-cd shared-components
-git pull origin main
-cd ..
-git add shared-components
-git commit -m "Update shared components"
-```
-
-### Auto-sync with GitHub Actions
-
-Create `.github/workflows/sync-shared-components.yml`:
-
-```yaml
-name: Sync Shared Components
-on:
-  repository_dispatch:
-    types: [shared-components-updated]
-  schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
-
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: recursive
-          token: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Update submodules
-        run: |
-          git submodule update --remote --merge --allow-unrelated-histories
-          git add .
-          git diff --staged --quiet || git commit -m "Auto-update shared components"
-          git push
-```
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
 ## Versioning
 
-Use semantic versioning for shared components:
+This project follows [Semantic Versioning](https://semver.org/):
 - `v1.0.0` - Initial release
 - `v1.1.0` - New features
 - `v1.0.1` - Bug fixes
+
+## License
+
+MIT License - see LICENSE file for details.

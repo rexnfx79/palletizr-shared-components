@@ -1,33 +1,48 @@
 {
-  "name": "@palletizr/shared-components",
+  "name": "@palletizr/astro-components",
   "version": "1.0.0",
-  "description": "Shared UI components for the Palletizr platform",
-  "main": "navigation.js",
+  "description": "Astro UI components for the Palletizr platform",
+  "type": "module",
+  "exports": {
+    "./navigation": "./src/components/Navigation.astro",
+    "./styles": "./src/styles/navigation.css"
+  },
+  "files": [
+    "src/**/*",
+    "dist/**/*"
+  ],
   "scripts": {
-    "setup": "node setup.js",
-    "setup:symlinks": "node setup.js --symlinks",
-    "setup:copy-only": "node setup.js --no-html-update"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "demo": "node demo.js"
   },
   "keywords": [
     "palletizr",
-    "navigation",
-    "ui-components",
-    "shared"
+    "astro",
+    "components",
+    "ui",
+    "navigation"
   ],
   "author": "Palletizr Team",
   "license": "MIT",
-  "files": [
-    "navigation.html",
-    "navigation.css", 
-    "navigation.js",
-    "setup.js",
-    "README.md"
-  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/rexnfx79/palletizr-shared-components.git"
+    "url": "https://github.com/rexnfx79/palletizr-astro-components.git"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.0.0"
+  },
+  "peerDependencies": {
+    "astro": "^4.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/react": "^3.0.0",
+    "astro": "^4.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "typescript": "^5.0.0"
   }
 }
