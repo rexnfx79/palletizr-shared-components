@@ -1,10 +1,10 @@
-# Migration Guide: Shared Components → Astro Components
+# Migration Guide: Old Shared Components → New Astro-Powered System
 
-This guide helps you migrate from the old shared components system to the new Astro-based component library.
+This guide helps you migrate from the old shared components system to the new Astro-powered system in the **same repository**.
 
 ## Overview
 
-The old system used file copying, symlinks, and manual setup scripts. The new system uses npm packages and Astro components for better maintainability and type safety.
+The old system used file copying, symlinks, and manual setup scripts. The new system uses npm packages and Astro components for better maintainability and type safety, but it's still the same `@palletizr/shared-components` package.
 
 ## What You Need to Do
 
@@ -28,9 +28,27 @@ git commit -m "Remove old shared components files"
 
 ### 2. Install New Package
 
+#### For Local Development (Current Setup)
+
+Since this package hasn't been published to npm yet, you can use it locally:
+
 ```bash
-npm install @palletizr/astro-components
+# In the shared-components repository
+npm link
+
+# In your other repositories
+npm link @palletizr/shared-components
 ```
+
+#### For Production Use (After Publishing)
+
+Once published to npm:
+
+```bash
+npm install @palletizr/shared-components
+```
+
+**Note**: This is the same package name as before, but now it's powered by Astro!
 
 ### 3. Update Your Code
 
@@ -59,7 +77,7 @@ npm install @palletizr/astro-components
 #### After (Astro files):
 ```astro
 ---
-import { Navigation } from '@palletizr/astro-components';
+import { Navigation } from '@palletizr/shared-components';
 ---
 
 <html>
@@ -75,7 +93,7 @@ import { Navigation } from '@palletizr/astro-components';
 #### If you can't use Astro (React/Vue/vanilla JS):
 ```jsx
 // React example
-import { Navigation } from '@palletizr/astro-components';
+import { Navigation } from '@palletizr/shared-components';
 
 function App() {
   return (
@@ -99,7 +117,7 @@ No changes needed - components work out of the box.
 // vite.config.js
 export default {
   optimizeDeps: {
-    include: ['@palletizr/astro-components']
+    include: ['@palletizr/shared-components']
   }
 }
 ```
@@ -108,7 +126,7 @@ export default {
 ```js
 // next.config.js
 const nextConfig = {
-  transpilePackages: ['@palletizr/astro-components']
+  transpilePackages: ['@palletizr/shared-components']
 }
 ```
 
@@ -179,7 +197,7 @@ document.getElementById('nav-badge-text').textContent = 'Custom Text';
 ### Component Not Rendering
 
 1. **Check imports**: Ensure you're importing from the correct path
-2. **Verify installation**: Run `npm list @palletizr/astro-components`
+2. **Verify installation**: Run `npm list @palletizr/shared-components`
 3. **Check console errors**: Look for build or runtime errors
 
 ### Styles Not Loading
@@ -194,6 +212,15 @@ document.getElementById('nav-badge-text').textContent = 'Custom Text';
 2. **Dependencies**: Run `npm install` to ensure all deps are installed
 3. **Framework compatibility**: Some frameworks may need additional configuration
 
+### Local Development Issues
+
+If using `npm link`:
+
+1. **Ensure link is created**: Run `npm link` in the shared-components repo
+2. **Verify link in other repos**: Run `npm link @palletizr/shared-components`
+3. **Check symlinks**: Ensure the link was created correctly
+4. **Restart dev servers**: Sometimes dev servers need to be restarted after linking
+
 ## Performance Benefits
 
 - **Smaller bundle size**: Tree-shaking removes unused code
@@ -206,7 +233,7 @@ document.getElementById('nav-badge-text').textContent = 'Custom Text';
 If you encounter issues during migration:
 
 1. Check the [main README](./README.md) for detailed documentation
-2. Review the [Storybook stories](./src/components/Navigation.stories.tsx) for examples
+2. Review the [demo pages](./src/pages/) for examples
 3. Open an issue in the repository with your specific error
 
 ## Rollback Plan
@@ -215,7 +242,7 @@ If you need to rollback temporarily:
 
 ```bash
 # Uninstall new package
-npm uninstall @palletizr/astro-components
+npm uninstall @palletizr/shared-components
 
 # Reinstall old system (if you have the files)
 # Copy the old navigation files back
@@ -223,3 +250,25 @@ npm uninstall @palletizr/astro-components
 ```
 
 **Note**: Rolling back will lose the benefits of the new system, so it's recommended to fix any issues rather than rollback.
+
+## What's Different Now
+
+- **Same package name**: Still `@palletizr/shared-components`
+- **Same repository**: Still `palletizr-shared-components`
+- **Better technology**: Now powered by Astro instead of file copying
+- **Same functionality**: All your existing navigation components work the same way
+- **Better developer experience**: Type safety, better tooling, and documentation
+
+## Publishing to NPM
+
+When you're ready to publish this package:
+
+```bash
+# Login to npm (if not already logged in)
+npm login
+
+# Publish the package
+npm publish --access public
+```
+
+**Note**: Make sure you have the right permissions to publish under the `@palletizr` scope.

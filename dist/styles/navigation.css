@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --nav-primary: #0f4a73;
+  --nav-text: #0b2a3c;
+  --nav-muted: #5b6875;
+  --nav-border: rgba(15, 74, 115, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.palletizr-nav {
+  font-family: 'Inter', ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+.palletizr-nav .container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.palletizr-nav .nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  min-height: 3.5rem;
+}
+
+.palletizr-nav .logo-group {
+  display: flex;
+  align-items: center;
+}
+
+.palletizr-nav .logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.palletizr-nav .logo-image {
+  height: 2.5rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.palletizr-nav .nav-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.palletizr-nav .nav-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--nav-text);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.palletizr-nav .nav-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.palletizr-nav .nav-subtitle {
+  font-size: 0.75rem;
+  color: var(--nav-muted);
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Transparent navigation background */
+.glass-nav {
+  background: transparent;
+  border-bottom: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .palletizr-nav .container {
+    padding: 0 1rem;
+  }
+  
+  .palletizr-nav .nav-subtitle {
+    display: none;
+  }
+}

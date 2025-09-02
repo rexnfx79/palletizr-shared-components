@@ -1,0 +1,19 @@
+{
+  "name": "@palletizr/shared-components",
+  "version": "2.0.0",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./navigation": "./components/Navigation.astro",
+    "./styles": "./styles/navigation.css"
+  },
+  "files": [
+    "components/**/*",
+    "styles/**/*",
+    "index.js"
+  ],
+  "peerDependencies": {
+    "astro": "^4.0.0"
+  }
+}

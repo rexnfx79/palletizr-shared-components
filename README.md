@@ -1,6 +1,6 @@
-# Palletizr Astro Components
+# Palletizr Shared Components
 
-A modern component library built with Astro for the Palletizr platform. This replaces the previous shared components system with a more maintainable, type-safe approach.
+Shared UI components for the Palletizr platform - now powered by Astro! This repository has been upgraded from the old file-copying system to use modern Astro components for better maintainability and type safety.
 
 ## Quick Start
 
@@ -20,6 +20,40 @@ npm run preview
 
 The development server will be available at `http://localhost:4321/`
 
+## What's New
+
+This repository has been **upgraded** from the old shared components system to use Astro:
+
+- ✅ **Same repository name**: Still `palletizr-shared-components`
+- ✅ **Better technology**: Now powered by Astro instead of file copying
+- ✅ **Same functionality**: All your existing navigation components work the same way
+
+## Installation
+
+### For Local Development (Current Setup)
+
+Since this package hasn't been published to npm yet, you can use it locally:
+
+```bash
+# In this repository
+npm link
+
+# In your other repositories
+npm link @palletizr/shared-components
+```
+
+### For Production Use (After Publishing)
+
+Once published to npm:
+
+```bash
+npm install @palletizr/shared-components
+```
+
+### For Non-Astro Projects
+
+Non-Astro projects will need to use the compiled output or consider migrating to Astro.
+
 ## Features
 
 - 🚀 **Astro-powered**: Built with the latest Astro framework
@@ -27,6 +61,7 @@ The development server will be available at `http://localhost:4321/`
 - 🎯 **Zero JS by default**: Components ship with minimal JavaScript
 - 🔧 **Customizable**: Extensive props for component customization
 - 📱 **Responsive**: Mobile-first design approach
+- 🔄 **Backward compatible**: Same API, better implementation
 
 ## Components
 
@@ -51,7 +86,7 @@ A responsive navigation header with glassmorphism effects and dynamic content.
 
 ```astro
 ---
-import { Navigation } from '@palletizr/astro-components';
+import { Navigation } from '@palletizr/shared-components';
 ---
 
 <!-- Basic usage -->
@@ -75,22 +110,6 @@ The navigation automatically adapts based on the current URL:
 - `app.palletizr.com` → Shows "Tutorial"
 - `palletizr.com` → Shows "Try Free" with "No signup required"
 - Other domains → Shows "Professional Calculator"
-
-## Installation
-
-### For Astro Projects
-
-```bash
-npm install @palletizr/astro-components
-```
-
-### For Non-Astro Projects
-
-```bash
-npm install @palletizr/astro-components
-```
-
-Note: Non-Astro projects will need to use the compiled output or consider migrating to Astro.
 
 ## Development
 
@@ -126,7 +145,7 @@ src/
 └── index.ts            # Main exports
 ```
 
-## Migration from Shared Components
+## Migration from Old System
 
 ### What Changed
 
@@ -148,8 +167,14 @@ git rm shared-components
 
 #### 2. Install New Package
 
+**For local development:**
 ```bash
-npm install @palletizr/astro-components
+npm link @palletizr/shared-components
+```
+
+**For production (after publishing):**
+```bash
+npm install @palletizr/shared-components
 ```
 
 #### 3. Update Imports
@@ -164,13 +189,13 @@ npm install @palletizr/astro-components
 **After:**
 ```astro
 ---
-import { Navigation } from '@palletizr/astro-components';
+import { Navigation } from '@palletizr/shared-components';
 ---
 
 <Navigation />
 ```
 
-#### 4. Update Build Process
+#### 4. Update Build Configuration
 
 **Before:** Files were copied/symlinked during setup
 **After:** Components are bundled during build
@@ -180,9 +205,23 @@ import { Navigation } from '@palletizr/astro-components';
 - ✅ **Better maintainability**: Single source of truth
 - ✅ **Type safety**: Full TypeScript support
 - ✅ **Versioning**: Semantic versioning with npm
-- ✅ **Performance**: Optimized builds and tree-shaking
-- ✅ **Developer experience**: Better tooling and debugging
+- ✅ **Performance**: Tree-shaking, optimized builds, better caching
+- ✅ **Developer experience**: Better debugging, IntelliSense, and documentation
 - ✅ **Consistency**: Standardized component API
+
+## Publishing to NPM
+
+When you're ready to publish this package:
+
+```bash
+# Login to npm (if not already logged in)
+npm login
+
+# Publish the package
+npm publish --access public
+```
+
+**Note**: Make sure you have the right permissions to publish under the `@palletizr` scope.
 
 ## Contributing
 
@@ -195,9 +234,10 @@ import { Navigation } from '@palletizr/astro-components';
 ## Versioning
 
 This project follows [Semantic Versioning](https://semver.org/):
-- `v1.0.0` - Initial release
-- `v1.1.0` - New features
-- `v1.0.1` - Bug fixes
+- `v1.0.0` - Initial release (old system)
+- `v2.0.0` - **NEW**: Astro-powered upgrade
+- `v2.1.0` - New features
+- `v2.0.1` - Bug fixes
 
 ## License
 

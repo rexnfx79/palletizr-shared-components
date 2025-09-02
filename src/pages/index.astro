@@ -3,9 +3,21 @@ import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 ---
 
-<Layout title="Palletizr Astro Components">
+<Layout title="Palletizr Shared Components - Astro Powered">
   <main>
-    <h1>Palletizr Astro Components</h1>
+    <h1>Palletizr Shared Components</h1>
+    <p class="subtitle">Now powered by Astro! 🚀</p>
+    
+    <div class="info-box">
+      <h3>What's New?</h3>
+      <p>This repository has been upgraded from the old file-copying system to use modern Astro components. Same functionality, better technology!</p>
+      <ul>
+        <li>✅ Same package name: <code>@palletizr/shared-components</code></li>
+        <li>✅ Same repository: <code>palletizr-shared-components</code></li>
+        <li>✅ Better technology: Now powered by Astro</li>
+        <li>✅ Same components: All your navigation components work the same way</li>
+      </ul>
+    </div>
     
     <section>
       <h2>Navigation Component</h2>
@@ -24,6 +36,15 @@ import Navigation from '../components/Navigation.astro';
       
       <p>No badge:</p>
       <Navigation showBadge={false} />
+    </section>
+    
+    <section>
+      <h2>Installation</h2>
+      <p>Install the same package as before:</p>
+      <pre><code>npm install @palletizr/shared-components</code></pre>
+      
+      <p>Use it the same way:</p>
+      <pre><code>import { Navigation } from '@palletizr/shared-components';</code></pre>
     </section>
   </main>
 </Layout>
@@ -44,7 +65,36 @@ import Navigation from '../components/Navigation.astro';
   
   h1 {
     color: #1f2937;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtitle {
+    color: #6b7280;
+    font-size: 1.25rem;
     margin-bottom: 2rem;
+  }
+  
+  .info-box {
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .info-box h3 {
+    color: #374151;
+    margin-bottom: 1rem;
+  }
+  
+  .info-box ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+  
+  .info-box li {
+    color: #4b5563;
+    margin: 0.5rem 0;
   }
   
   h2 {
@@ -55,5 +105,17 @@ import Navigation from '../components/Navigation.astro';
   p {
     color: #6b7280;
     margin-bottom: 1rem;
+  }
+  
+  pre {
+    background: #1f2937;
+    color: #f9fafb;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+  
+  code {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
   }
 </style>
